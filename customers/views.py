@@ -4,6 +4,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
+from .forms import SignupForm
 
 def signup(request):
     if request.user.is_authenticated():
@@ -21,4 +22,4 @@ def signup(request):
                 return HttpResponse('Confirm your email address to complete registration')
         else:
             form = SignupForm()
-            return render(request, 'registration/signup.html',{'form':form})
+            return render(request,'registration/signup.html',{'form':form})
