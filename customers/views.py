@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from django.shortcuts import render,redirect
 
 # Create your views here.
@@ -24,9 +23,7 @@ def signup(request):
         else:
             form = SignupForm()
             return render(request,'registration/signup.html',{'form':form})
-=======
 
 # Create your views here.
 def home(request):
     return render(request,'home.html')
->>>>>>> origin/feature/homepage
