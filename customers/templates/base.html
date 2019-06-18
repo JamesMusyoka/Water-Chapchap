@@ -1,0 +1,128 @@
+<div search></div>
+<div class="container-fluid no-gutter">
+    <div class="row row-centered no-gutter">
+        <div class="dashboard-panel">
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 col-centered" ng-show="showWiki">
+                <div class="panel panel-default shadowHover">
+                    <a href="/Wiki" class="panelLink">
+                        <div class="hubPanel panel-body">
+                            <div class="panelLogo" style="color:#2969B0;">
+                                <i class="fa fa-map-signs fa-4x"></i>
+                            </div>
+                            <div class="panelTitleBar">
+                                <div class="panelTitle">
+                                    Browse our Wiki
+                                </div>
+                            </div>
+                            <div class="panelContent">
+                                Learn new tips, tricks, and access helpful documents
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 col-centered" ng-show="showCommunity">
+                <div class="panel panel-default shadowHover">
+                    <a href="/Community" class="panelLink">
+                        <div class="hubPanel panel-body">
+                            <div class="panelLogo" style="color:mediumpurple;">
+                                <i class="fa fa-users fa-4x"></i>
+                            </div>
+                            <div class="panelTitleBar">
+                                <div class="panelTitle">
+                                    Community
+                                </div>
+                            </div>
+                            <div class="panelContent">
+                                Browse information from other users in a forum style.
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 col-centered" ng-show="showKB">
+                <a href="/knowledgeBase" class="panelLink">
+                    <div class="panel panel-default shadowHover">
+                        <div class="hubPanel panel-body">
+                            <div class="panelLogo" style="color:#D14841;">
+                                <i class="fa fa-map-o fa-4x"></i>
+                            </div>
+                            <div class="panelTitleBar">
+                                <div class="panelTitle">
+                                    Knowledge Base
+                                </div>
+                            </div>
+                            <div class="panelContent">
+                                Answers to common questions and helpful training tips
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 col-centered" ng-show="showMyTickets">
+                <a href="/mytickets" class="panelLink">
+                    <div class="panel panel-default shadowHover">
+                        <div class="hubPanel panel-body">
+                            <div class="panelLogo" style="color:#00A885;">
+                                <i class="fa fa-tags fa-4x"></i>
+                            </div>
+                            <div class="panelTitleBar">
+                                <div class="panelTitle">
+                                    Tickets
+                                </div>
+                            </div>
+                            <div class="panelContent">
+                                Send a ticket to our support team or review existing tickets
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row row-centered dashboard-panel">
+        <div class="col-xs-12 col-sm-6 col-md-5 col-lg-4 col-centered" ng-show="showKB">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <ul class="nav nav-pills">
+                        <li role="presentation"><a ng-click="getPopularArticles()">Popular Articles</a></li>
+                        <li role="presentation"><a ng-click="getRecentArticles()">Recent Articles</a></li>
+                        <li ng-show="UserInfo.isAuthenticated" role="presentation"><a ng-click="getRecentTickets()">Recent Tickets</a></li>
+                    </ul>
+                </div>
+                <div class="panelSeperator"></div>
+                <div class="panel-body">
+                    <ol class="list-unstyled panel-list">
+                        <li ng-if="PopularArticles" ng-repeat="Article in PopularArticles">
+                            <a href="/knowledgeBase/{{Article.ArticleID}}" ng-bind-html="Article.ArticleName"></a>
+                        </li>
+                        <li ng-show="UserInfo.isAuthenticated" ng-if="RecentTickets" ng-repeat="Ticket in RecentTickets">
+                            <a href="/ticket/{{Ticket.TicketNumber}}">{{Ticket.Name}}</a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-5 col-lg-4 col-centered" ng-show="showProducts && (Products.length > 0)">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <ul class="nav nav-pills">
+                        <li role="presentation"><a href="/Products">My Products</a></li>
+                    </ul>
+                </div>
+                <div class="panelSeperator"></div>
+                <div class="panel-body">
+                    <ol class="list-unstyled panel-list">
+                        <li ng-if="Products" ng-repeat="Product in Products">
+                            <a href="/Product/{{Product.ProductID}}">{{Product.Name}}</a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    i {
+        vertical-align: middle !important;
+    }
