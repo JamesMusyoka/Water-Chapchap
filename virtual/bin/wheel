@@ -1,4 +1,4 @@
-#!/home/moringaschool/Water-Chapchap/virtual/bin/python3.6
+#!/home/john/Water-Chapchap/virtual/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
