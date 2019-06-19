@@ -17,8 +17,8 @@ LITRES = (
 )
 class customer(models.Model):
     name = models.CharField(max_length =100, )
-    Street_address   = models.CharField(max_length=120)
-    Litres          = models.CharField(max_length=120, choices=LITRES, default='40Ltrs')
+    Street_addres= models.CharField(max_length=120)
+    Litres= models.CharField(max_length=120, choices=LITRES, default='40Ltrs')
     phone = PhoneNumberField(null=False, blank=False, unique=True)
     time = models.DateTimeField(auto_now_add=True, null=True)
 

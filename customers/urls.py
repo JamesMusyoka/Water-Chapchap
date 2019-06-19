@@ -5,8 +5,8 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    url(r'^signup', views.signup, name = 'signup'),
     url('^$',views.home,name = 'home'),
+    url(r'^signup', views.signup, name = 'signup'),
     url(r'order$', views.Customer_Create.as_view(), name='order_form'),
 ] 
 

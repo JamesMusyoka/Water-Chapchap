@@ -33,7 +33,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'bootstrap4',
     'bootstrap3',
-    'firebase',
     'customers',
     'admin_interface',
     'colorfield',
@@ -44,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'notification',
+    # 'fcm_django',
 ]
 
 MIDDLEWARE = [
@@ -82,12 +83,27 @@ WSGI_APPLICATION = 'water.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'chapchap',
+        'USER': 'moringaschool',
+    'PASSWORD':'37472377',
     }
 }
 
 
+
+# FCM_DJANGO_SETTINGS = {
+#         "APP_VERBOSE_NAME": "[string for AppConfig's verbose_name]",
+#          # default: _('FCM Django')
+#         "FCM_SERVER_KEY": "[your api key]",
+#          # true if you want to have only one active device per registered user at a time
+#          # default: False
+#         "ONE_DEVICE_PER_USER": True/False,
+#          # devices to which notifications cannot be sent,
+#          # are deleted upon receiving error response from FCM
+#          # default: False
+#         "DELETE_INACTIVE_DEVICES": True/False,
+# }
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -106,6 +122,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+SENDSMS_BACKEND = 'sendsms.backends.console.SmsBackend'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
