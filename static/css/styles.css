@@ -1,12 +1,7 @@
 .about{
     padding: 15ex;
 }
-.what{
-    padding: 5ex;
-}
-background{
-    background-size: 3px 100px;
-}
+
 .wak{
     color: brown;
     padding: 5ex;
@@ -16,9 +11,12 @@ background{
   width: 33.33%;
 }
 
-/* Clear floats after the columns */
+
 .row:after {
   content: "";
   display: table;
   clear: both;
+}
+.one{
+  padding: 15ex;
 }
