@@ -1,10 +1,11 @@
+<<<<<<< HEAD
 from django.shortcuts import render,redirect
-
-# Create your views here.
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from .forms import SignupForm
+from django.views import generic
+from .models import customer
 
 def signup(request):
     if request.user.is_authenticated():
@@ -27,3 +28,9 @@ def signup(request):
 # Create your views here.
 def home(request):
     return render(request,'home.html')
+
+
+
+class Customer_Create(generic.CreateView):
+    model=customer
+    fields=['name', 'Street_address', 'Litres', 'phone']
