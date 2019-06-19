@@ -47,5 +47,109 @@
           </div>
    </div>
    </div>
+
+  <!--------------------GOOGLE MAPS API ------------------->
+  <style>
+    #map{
+      height: 400px;
+      width: 100%;
+    }
+  </style>
+
+  <div>
+    <h2>MY ggole map</h2>
+  <div id="map"></div>
+  <script>
+    function initMap(){
+      //map options
+      var options = {
+        zoom:13,
+        center:{lat:1.2921, lang:-36.8219}
+      }
+      //new map
+      var map = new google.maps.Map(
+      document.getElementById('map'),options);
+      
+      //listen for click on map
+      google.maps.event.addListener(map, 'click',
+      function(event){
+        addMarker({coords:event.LatLng});
+      });
+      /*
+      // Add marker
+      var marker = new google.maps.Marker({position: {lat:1.2921, lang:-36.8219},
+       map: map,
+       icon:''
+      });
+
+      var infoWindow = new google.mops.InfoWindow({
+        content:'<h2>Water Chapchap</h2>'
+      });
+
+      marker.addListener('click', function(){
+        infoWindow.open(map, marker);
+      });
+      */
+      
+      //Array of markers
+
+      var markers = [
+        {
+          coords:{lat:1.2921, lang:-36.8219},
+          iconImage:'',
+          content:'<h1>water chapchap</h1>'
+        },
+        {
+          coords:{lat:1.2921, lang:-36.8219},
+          content:'<h1>water chapchap</h1>'
+        },
+        {
+          coords:{lat:1.2984, lang:-36.8132},
+          content:'<h1>water chapchap</h1>'
+        },
+        {
+          coords:{lat: -1.3058, lang:-36.7392}
+        }
+      ];
+
+        //lopp throug markers
+
+      for (var i = 0; i< markers.lenght; i++){
+        //add marker
+        addMarker(markers[i]);
+      }
+
+    
+      
+      //Add marker function
+      function addMarker(coords){
+        var marker = new google.maps.Marker({           position:props.coords,
+          map: map,
+          //icon:props.iconImage
+        });
+
+        if(props.iconImage){
+          //set icon image
+          marker.setIcon(props.iconImage);
+        }
+        
+        // cehck content
+
+        if (props.content){
+          var infoWindow = new google.mops.InfoWindow({
+            content:props.content
+          });
+
+          marker.addListener('click', function(){
+            infoWindow.open(map, marker);
+          });
+        }
+      }
+    }
+  </script>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0xGgnQmijeU46Ec2XxUj6DqtWq4oeaqU&callback=initMap">
+  </script>
+</div>
 </div>
 {% endblock %}
