@@ -1,5 +1,4 @@
 .about{
-    background-color: aqua;
     padding: 15ex;
 }
 .what{
@@ -11,4 +10,15 @@ background{
 .wak{
     color: brown;
     padding: 5ex;
+}
+.column {
+  float: left;
+  width: 33.33%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
