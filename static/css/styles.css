@@ -1,0 +1,19 @@
+.about{
+    padding: 15ex;
+}
+.wak{
+    color: brown;
+    padding: 5ex;
+}
+.column {
+  float: left;
+  width: 33.33%;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.one{
+  padding: 15ex;
+}

@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="john">
-    <nav class="navbar navbar-expand-lg  navbar-fixed-top john">
+    <nav id="navbar" class="navbar navbar-expand-lg  navbar-fixed-top john active">
       <a class="navbar-brand" href="/">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -23,14 +23,21 @@
               <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">About Us</a>
+              <a class="nav-link" href="#about">About Us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">How It Works</a>
+              <a class="nav-link" href="#works">How It Works</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">Profile</a>
+              <a class="nav-link" href="{% url 'faqs' %}">Faqs</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contacts">Contacts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#testimonials">Testimonials</a>
+            </li>
+            
     
             <li class="nav-item">
               <a class="nav-link" href="#"></a>
@@ -61,8 +68,17 @@
       </div>
     </nav>
   </div>
-  <style>
-   
-  </style>
+  <script>
+    window.onscroll = function () { myFunction() };
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+    function myFunction() {
+      if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+      } else {
+        navbar.classList.remove("sticky");
+      }
+    }
+  </script 
 </body>
 </html>

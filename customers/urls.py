@@ -8,6 +8,7 @@ urlpatterns = [
     url('^$',views.home,name = 'home'),
     url(r'^signup', views.signup, name = 'signup'),
     url(r'order$', views.Customer_Create.as_view(), name='order_form'),
+    url(r'^faqs/', views.faqs, name='faqs'),
 ] 
 
 if settings.DEBUG:

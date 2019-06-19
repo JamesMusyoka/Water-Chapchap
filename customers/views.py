@@ -42,3 +42,6 @@ class Customer_Create(generic.CreateView):
 def loggedin(request):
     n = notification.objects.filter(user=request.user, viewed=False)
     return render('login.html', {'full_name': request.user.username, 'notifications':n})
+
+def faqs(request):
+    return render(request, 'faqs.html')
