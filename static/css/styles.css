@@ -5,3 +5,10 @@
 .what{
     padding: 5ex;
 }
+background{
+    background-size: 3px 100px;
+}
+.wak{
+    color: brown;
+    padding: 5ex;
+}
