@@ -5,8 +5,32 @@ from django.contrib.auth.decorators import login_required
 from .forms import SignupForm
 from django.views import generic
 from .models import customer
-from notification.models import Notification
-from sendsms import api
+from djexmo import send_message
+# import package
+import africastalking
+
+
+# Initialize SDK
+username = "sandbox"    # use 'sandbox' for development in the test environment
+api_key = "fed884a8601206cd3bdb451518dafa9f1ac1e551c3a7dc7e70e0827c3303f0ca"      # use your sandbox app API key for development in the test environment
+africastalking.initialize(username, api_key)
+
+
+# Initialize a service e.g. SMS
+sms = africastalking.SMS
+
+
+# Use the service synchronously
+response = sms.send("Hello Message!", ["+254774100224"])
+print(response)
+
+# Or use it asynchronously
+def on_finish(error, response):
+    if error is not None:
+        raise error
+    print(response)
+
+sms.send("Hello Message!", ["+254774100224"], callback=on_finish)    
 
 
 def signup(request):
@@ -36,12 +60,6 @@ def home(request):
 class Customer_Create(generic.CreateView):
     model=customer
     fields=['name', 'Street_address', 'Litres', 'phone']
-    api.send_sms(body='I can haz txt', from_phone='+254774100224', to=['+254776500221'])
-
-
-def loggedin(request):
-    n = notification.objects.filter(user=request.user, viewed=False)
-    return render('login.html', {'full_name': request.user.username, 'notifications':n})
-
+    success_url = '/order/'
 def faqs(request):
     return render(request, 'faqs.html')

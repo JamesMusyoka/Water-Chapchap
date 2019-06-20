@@ -4,11 +4,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
+
 urlpatterns = [
     url('^$',views.home,name = 'home'),
     url(r'^signup', views.signup, name = 'signup'),
-    url(r'order$', views.Customer_Create.as_view(), name='order_form'),
+    url(r'^order', views.Customer_Create.as_view(), name='order_form'),
     url(r'^faqs/', views.faqs, name='faqs'),
+    # url(r'^sms/', views.send_sms, name='send_sms')    
 ] 
 
 if settings.DEBUG:

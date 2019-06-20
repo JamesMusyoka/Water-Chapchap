@@ -21,7 +21,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'b0--ray)s^iix9zgkdf*!s14ai1e0y8rj13s*k%x6_54+d%gwg'
-
+TWILIO_ACCOUNT_SID = 'AC020b6ba88c6282f30a57c323d9ef2515' 
+TWILIO_AUTH_TOKEN = 'c1dd0b73a034b2c732f5ba1256a4b51a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -31,20 +32,20 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'bootstrap4',
     'bootstrap3',
+    'bootstrap4',
     'customers',
     'admin_interface',
     'colorfield',
-    'flat_responsive',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'notification',
-    # 'fcm_django',
+    'registration',
+    'flat_responsive',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -121,8 +122,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-SENDSMS_BACKEND = 'sendsms.backends.console.SmsBackend'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/

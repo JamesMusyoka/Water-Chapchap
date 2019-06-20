@@ -1,5 +1,6 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
+from django.utils.timezone import now
 
 # Create your models h
 
@@ -17,10 +18,11 @@ LITRES = (
 )
 class customer(models.Model):
     name = models.CharField(max_length =100, )
-    Street_addres= models.CharField(max_length=120)
+    Street_address= models.CharField(max_length=120)
     Litres= models.CharField(max_length=120, choices=LITRES, default='40Ltrs')
     phone = PhoneNumberField(null=False, blank=False, unique=True)
     time = models.DateTimeField(auto_now_add=True, null=True)
+    date = models.DateTimeField(default=now)
 
     def __str__(self):
             return self.name
