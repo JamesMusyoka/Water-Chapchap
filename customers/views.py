@@ -6,36 +6,42 @@ from .forms import SignupForm
 from django.views import generic
 from .models import customer
 from djexmo import send_message
+from django.contrib.messages.views import SuccessMessageMixin
 # import package
 import africastalking
 
+import nexmo
+
+client = nexmo.Client(key='04893f7a', secret='qpiRMW4Elv3AChe2')
+
+
+responseData = client.send_message(
+    {
+        "from": "Water-chapchap",
+        "to": '254708608180',
+        "text": "You have successfully ordered your product, we will deliver it into your door step",
+    }
+)
+
+if responseData["messages"][0]["status"] == "0":
+    print("Message sent successfully.")
+else:
+    print(f"Message failed with error: {responseData['messages'][0]['error-text']}")
 
 # Initialize SDK
-username = "sandbox"    # use 'sandbox' for development in the test environment
+username = "Water-chapchap"    # use 'sandbox' for development in the test environment
 api_key = "fed884a8601206cd3bdb451518dafa9f1ac1e551c3a7dc7e70e0827c3303f0ca"      # use your sandbox app API key for development in the test environment
 africastalking.initialize(username, api_key)
 
 
 # Initialize a service e.g. SMS
 sms = africastalking.SMS
-
-
-# Use the service synchronously
-response = sms.send("Hello Message!", ["+254774100224"])
-print(response)
-
-# Or use it asynchronously
-def on_finish(error, response):
-    if error is not None:
-        raise error
-    print(response)
-
-sms.send("Hello Message!", ["+254774100224"], callback=on_finish)    
+   
 
 
 def signup(request):
     if request.user.is_authenticated():
-        return redirect('customers.html')
+        return redirect('home')
     else:
         if request.method =='POST':
             form = SignupForm(request.POST)
@@ -57,9 +63,14 @@ def home(request):
 
 
 
-class Customer_Create(generic.CreateView):
+class Customer_Create(SuccessMessageMixin,generic.CreateView):
     model=customer
     fields=['name', 'Street_address', 'Litres', 'phone']
     success_url = '/order/'
+    def get_success_message(self, cleaned_data):
+        return "Thank you for your order, we are connecting you with our supplier who will be contacting you shortly..."
+
+
+
 def faqs(request):
     return render(request, 'faqs.html')

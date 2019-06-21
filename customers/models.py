@@ -14,6 +14,13 @@ LITRES = (
     ('160Ltrs', '160Ltrs'),
     ('180Ltrs', '180Ltrs'),
     ('200Ltrs', '200Ltrs'),
+    ('300Ltrs', '300Ltrs'),
+    ('1000Ltrs', '1000Ltrs'),
+    ('2000Ltrs', '2000Ltrs'),
+    ('3000Ltrs', '3000Ltrs'),
+    ('4000Ltrs', '4000Ltrs'),
+    ('5000Ltrs', '5000Ltrs'),
+    ('10000Ltrs', '1000Ltrs'),
 
 )
 class customer(models.Model):

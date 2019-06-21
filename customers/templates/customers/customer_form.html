@@ -1,9 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-<div style="background-color:gainsboro; height:100vh; position:relative;">
-<div class="container-fluid" >
-    <div class="row" style="position:relative;left:350px; background-color:">
-        <div class="col-sm-12 col-md-7">
+<div class="container-top" style="margin-top: -59px;" >
+<div style="height: 600px; background-image: url('https://media.graytvinc.com/images/810*455/1280x720_60115B00-NLXKZ1.jpg'); background-size: cover;background-repeat: no-repeat; height:100vh; position:relative;">
+    <center><div class="form-group" style="width:50vw; text-align: left;">
+            {% if messages %}
+                {% for message in messages %}
+                <div class=" alert alert-success">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        </div></center>
+    <div class="row" style=" width: 400px; margin-left: 400px; margin-top: 70px; background-image: url('https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2016/63-scientistsdi.jpg'); background-size: cover;background-repeat: no-repeat;">
+        <div class="col-sm-12 col-md-4" style="color: white;">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">

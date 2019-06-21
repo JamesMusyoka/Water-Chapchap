@@ -4,14 +4,15 @@
 
 
 {% for field in form  %}
-
+<div class="ro" style="">
     <div class="form-group" style="position:relative; text-align:justify;">
         <div class="col-ms-offset-2 col-ms-10 ">
             <span class="text-danger  small">{{field.errors}}</span>
         </div>
         <label class="control-label col-sm-2">{{ field.label_tag }}</label>
-        <div class="col.sm-10">{{field}}</div>
+        <div class="col.sm-8" style="text-align: center">{{field}}</div>
     </div>
+</div>
 {% endfor %}
     {% endblock %}
   
